@@ -3,4 +3,18 @@
     <color name="colorPrimary">#1d1f2d</color>
     <color name="colorPrimaryDark">#15161e</color>
     <color name="colorAccent">#189be7</color>
+    
+    <color name="white">#ffffff</color>
+    <color name="blue">#0000ff</color>
+    <color name="yellow">#fff200</color>
+    <color name="pink">#c20064</color>
+    <color name="green">#11c911</color>
+
+    <array name="demo_colors">
+        <item>@color/white</item>
+        <item>@color/blue</item>
+        <item>@color/yellow</item>
+        <item>@color/pink</item>
+        <item>@color/green</item>
+    </array>
 </resources>
