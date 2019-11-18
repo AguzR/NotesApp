@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.EditorActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/LayoutMargin_16dp"
+        android:layout_marginRight="@dimen/LayoutMargin_16dp"
+        android:layout_marginTop="@dimen/LayoutMargin_16dp">
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/to_do"
+            android:inputType="textCapSentences"
+            android:textSize="14sp"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_marginTop="@dimen/LayoutMargin_16dp"
+            android:gravity="start|top"
+            android:hint="@string/enter_note"
+            android:inputType="textMultiLine"
+            android:minLines="6"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>
