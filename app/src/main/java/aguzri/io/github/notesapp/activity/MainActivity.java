@@ -14,11 +14,14 @@ import java.util.List;
 import aguzri.io.github.notesapp.R;
 import aguzri.io.github.notesapp.adapter.NoteAdapter;
 import aguzri.io.github.notesapp.model.Note;
+import aguzri.io.github.notesapp.presenter.EditorPresenter;
 import aguzri.io.github.notesapp.presenter.MainPresenter;
 import aguzri.io.github.notesapp.view.MainView;
 
 public class MainActivity extends AppCompatActivity implements MainView{
 
+    private static final int INTENT_EDIT = 200;
+    private static final int INTENT_ADD = 100;
     FloatingActionButton fab;
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefresh;
@@ -40,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements MainView{
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fab.setOnClickListener(view ->
-                startActivity(new Intent(this, EditorActivity.class))
+                startActivityForResult(new Intent(this, EditorActivity.class),
+                        INTENT_ADD)
         );
 
         presenter = new MainPresenter(this);
@@ -50,10 +54,30 @@ public class MainActivity extends AppCompatActivity implements MainView{
                 () -> presenter.getData()
         );
 
-        itemClickListener = (((view, position) -> {
+        itemClickListener = ((view, position) -> {
+            int id = note.get(position).getId();
             String title = note.get(position).getTitle();
-            Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
-        }));
+            String notes = note.get(position).getNote();
+            int color = note.get(position).getColor();
+
+            Intent intent = new Intent(this, EditorPresenter.class);
+            intent.putExtra("id", id);
+            intent.putExtra("title", title);
+            intent.putExtra("note", notes);
+            intent.putExtra("color", color);
+            startActivityForResult(intent, INTENT_EDIT);
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == INTENT_ADD && resultCode == RESULT_OK) {
+            presenter.getData(); // for reload data
+        } else if (requestCode == INTENT_EDIT && resultCode == RESULT_OK) {
+            presenter.getData(); // for reload data
+        }
     }
 
     @Override

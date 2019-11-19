@@ -1,9 +1,7 @@
 package aguzri.io.github.notesapp.presenter;
 
 import android.support.annotation.NonNull;
-import android.widget.Toast;
 
-import aguzri.io.github.notesapp.activity.EditorActivity;
 import aguzri.io.github.notesapp.client.ApiClient;
 import aguzri.io.github.notesapp.client.ApiInterface;
 import aguzri.io.github.notesapp.model.Note;
@@ -33,9 +31,9 @@ public class EditorPresenter {
                 if (response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
                     if (success) {
-                        view.onAddSuccess(response.body().getMessage());
+                        view.onRequestSuccess(response.body().getMessage());
                     } else {
-                        view.onAddError(response.body().getMessage());
+                        view.onRequestError(response.body().getMessage());
                     }
                 }
             }
@@ -43,9 +41,33 @@ public class EditorPresenter {
             @Override
             public void onFailure(@NonNull Call<Note> call, @NonNull Throwable t) {
                 view.hideProgressDialog();
-                view.onAddError(t.getLocalizedMessage());
+                view.onRequestError(t.getLocalizedMessage());
             }
         });
 
+    }
+
+    public void updateNote(int id, String title, String note, int color) {
+
+        view.showProgressDialog();
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<Note> call = apiInterface.updateNote(id, title, note, color);
+
+        call.enqueue(new Callback<Note>() {
+            @Override
+            public void onResponse(@NonNull Call<Note> call, @NonNull Response<Note> response) {
+                view.hideProgressDialog();
+                if (response.isSuccessful() && response.body() != null) {
+                    view.onRequestSuccess(response.body().getMessage());
+                } else {
+                    view.onRequestError(response.body().getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Note> call, @NonNull Throwable t) {
+
+            }
+        });
     }
 }
