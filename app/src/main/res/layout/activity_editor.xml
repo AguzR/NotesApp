@@ -9,9 +9,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/LayoutMargin_16dp"
-        android:layout_marginRight="@dimen/LayoutMargin_16dp"
-        android:layout_marginTop="@dimen/LayoutMargin_16dp">
+        android:layout_marginLeft="@dimen/dimens16dp"
+        android:layout_marginRight="@dimen/dimens16dp"
+        android:layout_marginTop="@dimen/dimens16dp">
 
         <EditText
             android:id="@+id/title"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
-            android:layout_marginTop="@dimen/LayoutMargin_16dp"
+            android:layout_marginTop="@dimen/dimens16dp"
             android:gravity="start|top"
             android:hint="@string/enter_note"
             android:inputType="textMultiLine"
@@ -40,8 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/note"
-            android:layout_marginBottom="@dimen/LayoutMargin_16dp"
-            android:layout_marginTop="@dimen/LayoutMargin_16dp"
+            android:layout_marginBottom="@dimen/dimens16dp"
+            android:layout_marginTop="@dimen/dimens16dp"
             app:spectrum_colors="@array/demo_colors" />
     </RelativeLayout>
 

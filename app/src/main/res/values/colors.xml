@@ -9,6 +9,8 @@
     <color name="yellow">#fff200</color>
     <color name="pink">#c20064</color>
     <color name="green">#11c911</color>
+    <color name="black">#000000</color>
+    <color name="mgrey">#a77e7e</color>
 
     <array name="demo_colors">
         <item>@color/white</item>

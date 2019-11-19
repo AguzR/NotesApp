@@ -12,7 +12,7 @@ public class Note {
     @Expose
     @SerializedName("note") private String note;
     @Expose
-    @SerializedName("color") private String color;
+    @SerializedName("color") private int color;
     @Expose
     @SerializedName("created") private String created;
     @Expose
@@ -44,11 +44,11 @@ public class Note {
         this.note = note;
     }
 
-    public String getColor() {
+    public int getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(int color) {
         this.color = color;
     }
 

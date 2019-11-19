@@ -1,10 +1,13 @@
 package aguzri.io.github.notesapp.client;
 
+import java.util.List;
+
 import aguzri.io.github.notesapp.model.Note;
 import aguzri.io.github.notesapp.model.Value;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
@@ -16,4 +19,7 @@ public interface ApiInterface {
             @Field("note") String note,
             @Field("color") int color
     );
+
+    @GET("api/read.php")
+    Call<List<Note>> getNotes();
 }

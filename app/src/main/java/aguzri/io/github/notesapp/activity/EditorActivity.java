@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.thebluealliance.spectrum.SpectrumPalette;
 
+import aguzri.io.github.notesapp.presenter.EditorPresenter;
+import aguzri.io.github.notesapp.view.EditorView;
 import retrofit2.Call;
 
 import aguzri.io.github.notesapp.R;
@@ -21,13 +23,14 @@ import aguzri.io.github.notesapp.model.Note;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditorActivity extends AppCompatActivity {
+public class EditorActivity extends AppCompatActivity implements EditorView {
 
     EditText et_title, et_note;
     ProgressDialog progressDialog;
     SpectrumPalette palette;
 
     ApiInterface apiInterface;
+    EditorPresenter presenter;
 
     int color;
 
@@ -50,6 +53,8 @@ public class EditorActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
+
+        presenter = new EditorPresenter(this);
     }
 
     @Override
@@ -73,7 +78,7 @@ public class EditorActivity extends AppCompatActivity {
                 } else if (note.isEmpty()) {
                     et_note.setError("Please enter a title");
                 } else {
-                    saveNote(title, note, color);
+                    presenter.saveNote(title, note, color);
                 }
                 return true;
             default:
@@ -81,39 +86,24 @@ public class EditorActivity extends AppCompatActivity {
         }
     }
 
-    private void saveNote(final String title, final String note, final int color) {
+    @Override
+    public void showProgressDialog() {
         progressDialog.show();
-
-        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<Note> call = apiInterface.createNote(title, note, color);
-
-        call.enqueue(new Callback<Note>() {
-            @Override
-            public void onResponse(@NonNull Call<Note> call, @NonNull Response<Note> response) {
-                progressDialog.dismiss();
-
-                if (response.isSuccessful() && response.body() != null) {
-                    Boolean success = response.body().getSuccess();
-                    if (success) {
-                        Toast.makeText(EditorActivity.this,
-                                response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        finish();
-                    } else {
-                        Toast.makeText(EditorActivity.this,
-                                response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Note> call, @NonNull Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(EditorActivity.this,
-                        t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
+    @Override
+    public void hideProgressDialog() {
+        progressDialog.dismiss();
+    }
 
+    @Override
+    public void onAddSuccess(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void onAddError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }
