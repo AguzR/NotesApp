@@ -1,8 +1,10 @@
 package aguzri.io.github.notesapp.activity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,7 +32,6 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
     ProgressDialog progressDialog;
     SpectrumPalette palette;
 
-    ApiInterface apiInterface;
     EditorPresenter presenter;
 
     int color, id;
@@ -72,7 +73,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
 
         if (id != 0) {
             actionMenu.findItem(R.id.edit).setVisible(true);
-            actionMenu.findItem(R.id.delete).setVisible(false);
+            actionMenu.findItem(R.id.delete).setVisible(true);
             actionMenu.findItem(R.id.save).setVisible(false);
             actionMenu.findItem(R.id.update).setVisible(false);
         } else {
@@ -117,6 +118,27 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
                 } else {
                     presenter.updateNote(id, title, note, color);
                 }
+
+            case R.id.delete:
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+                alertDialog.setTitle("Confirm !");
+                alertDialog.setMessage("Are you sure to delete this note ?");
+                alertDialog.setCancelable(false);
+                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                        presenter.deleteNote(id);
+                    }
+                });
+                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                alertDialog.show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -135,6 +157,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
     @Override
     public void onRequestSuccess(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        setResult(RESULT_OK);
         finish();
     }
 

@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
             String notes = note.get(position).getNote();
             int color = note.get(position).getColor();
 
-            Intent intent = new Intent(this, EditorPresenter.class);
+            Intent intent = new Intent(this, EditorActivity.class);
             intent.putExtra("id", id);
             intent.putExtra("title", title);
             intent.putExtra("note", notes);
@@ -75,7 +75,8 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
         if (requestCode == INTENT_ADD && resultCode == RESULT_OK) {
             presenter.getData(); // for reload data
-        } else if (requestCode == INTENT_EDIT && resultCode == RESULT_OK) {
+        }
+        else if (requestCode == INTENT_EDIT && resultCode == RESULT_OK) {
             presenter.getData(); // for reload data
         }
     }

@@ -70,4 +70,36 @@ public class EditorPresenter {
             }
         });
     }
+
+    public void deleteNote(int id) {
+
+        view.showProgressDialog();
+
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<Note> call = apiInterface.deleteNote(id);
+
+        call.enqueue(new Callback<Note>() {
+            @Override
+            public void onResponse(@NonNull Call<Note> call, @NonNull Response<Note> response) {
+                view.hideProgressDialog();
+
+                if (response.isSuccessful() && response.body() != null) {
+
+                    Boolean success = response.body().getSuccess();
+                    if (success) {
+                        view.onRequestSuccess(response.body().getMessage());
+                    } else {
+                        view.onRequestError(response.body().getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Note> call, @NonNull Throwable t) {
+                view.hideProgressDialog();
+                view.onRequestError(t.getLocalizedMessage());
+            }
+        });
+
+    }
 }
