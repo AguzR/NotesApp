@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
         setContentView(R.layout.activity_main);
 
         sessionManager = new SessionManager(this);
-//        sessionManager.checkLogin();
+        sessionManager.checkLogin();
 
         fab = findViewById(R.id.add);
         recyclerView = findViewById(R.id.recyler_view);

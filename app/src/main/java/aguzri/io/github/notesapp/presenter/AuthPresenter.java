@@ -5,16 +5,18 @@ import android.support.annotation.NonNull;
 import aguzri.io.github.notesapp.client.ApiClient;
 import aguzri.io.github.notesapp.client.ApiInterface;
 import aguzri.io.github.notesapp.model.Users;
-import aguzri.io.github.notesapp.view.EditorView;
+import aguzri.io.github.notesapp.utils.SessionManager;
+import aguzri.io.github.notesapp.view.AuthView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AuthPresenter {
 
-    EditorView view;
+    AuthView view;
+    String idUser, name, email;
 
-    public AuthPresenter(EditorView view) {
+    public AuthPresenter(AuthView view) {
         this.view = view;
     }
 
@@ -32,6 +34,7 @@ public class AuthPresenter {
                 if (response.isSuccessful() && response.body() !=null) {
                     Boolean success = response.body().getSuccess();
                     if (success) {
+                        view.onGetUsers(response.body().getId(), response.body().getName(), response.body().getEmail());
                         view.onRequestSuccess(response.body().getMessage());
                     } else {
                         view.onRequestError(response.body().getMessage());

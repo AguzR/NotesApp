@@ -12,20 +12,25 @@ import android.widget.Toast;
 
 import aguzri.io.github.notesapp.R;
 import aguzri.io.github.notesapp.presenter.AuthPresenter;
+import aguzri.io.github.notesapp.utils.SessionManager;
+import aguzri.io.github.notesapp.view.AuthView;
 import aguzri.io.github.notesapp.view.EditorView;
 
-public class LoginActivity extends AppCompatActivity implements EditorView{
+public class LoginActivity extends AppCompatActivity implements AuthView{
 
     EditText et_email, et_password;
     TextView tv_regist;
     Button btn_login;
     AuthPresenter presenter;
     ProgressDialog progressDialog;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sessionManager = new SessionManager(this);
 
         et_email = findViewById(R.id.et_email);
         et_password = findViewById(R.id.et_password);
@@ -61,6 +66,7 @@ public class LoginActivity extends AppCompatActivity implements EditorView{
         });
     }
 
+
     @Override
     public void showProgressDialog() {
         progressDialog.show();
@@ -68,13 +74,17 @@ public class LoginActivity extends AppCompatActivity implements EditorView{
 
     @Override
     public void hideProgressDialog() {
-        progressDialog.dismiss();
+        progressDialog.hide();
+    }
+
+    @Override
+    public void onGetUsers(String idUser, String name, String email) {
+        sessionManager.createSession(idUser, name, email);
     }
 
     @Override
     public void onRequestSuccess(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override

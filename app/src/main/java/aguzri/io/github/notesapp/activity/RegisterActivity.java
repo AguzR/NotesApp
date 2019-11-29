@@ -12,9 +12,10 @@ import android.widget.Toast;
 
 import aguzri.io.github.notesapp.R;
 import aguzri.io.github.notesapp.presenter.AuthPresenter;
+import aguzri.io.github.notesapp.view.AuthView;
 import aguzri.io.github.notesapp.view.EditorView;
 
-public class RegisterActivity extends AppCompatActivity implements EditorView{
+public class RegisterActivity extends AppCompatActivity implements AuthView{
 
     TextView tv_login;
     EditText et_name, et_email, et_password, et_cpassword;
@@ -78,6 +79,11 @@ public class RegisterActivity extends AppCompatActivity implements EditorView{
     public void onRequestSuccess(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    @Override
+    public void onGetUsers(String idUser, String name, String email) {
+        // Only Login is Here
     }
 
     @Override
