@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity.RegisterActivity">
 
     <android.support.v4.widget.NestedScrollView
@@ -22,7 +23,6 @@
                 android:layout_marginBottom="@dimen/dimens4dp"
                 android:hint="@string/fullname"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
                 android:textSize="16sp" />
 
             <EditText
@@ -33,7 +33,6 @@
                 android:layout_marginBottom="@dimen/dimens4dp"
                 android:hint="@string/email_address"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
                 android:textSize="16sp" />
 
             <EditText
@@ -44,7 +43,6 @@
                 android:layout_marginBottom="@dimen/dimens4dp"
                 android:hint="@string/password"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
                 android:textSize="16sp" />
 
             <EditText
@@ -55,7 +53,6 @@
                 android:layout_marginBottom="@dimen/dimens4dp"
                 android:hint="@string/confirm_password"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
                 android:textSize="16sp" />
 
             <TextView
