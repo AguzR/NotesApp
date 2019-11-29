@@ -16,6 +16,7 @@ import aguzri.io.github.notesapp.adapter.NoteAdapter;
 import aguzri.io.github.notesapp.model.Note;
 import aguzri.io.github.notesapp.presenter.EditorPresenter;
 import aguzri.io.github.notesapp.presenter.MainPresenter;
+import aguzri.io.github.notesapp.utils.SessionManager;
 import aguzri.io.github.notesapp.view.MainView;
 
 public class MainActivity extends AppCompatActivity implements MainView{
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
     FloatingActionButton fab;
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefresh;
+    SessionManager sessionManager;
 
     MainPresenter presenter;
     NoteAdapter adapter;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements MainView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sessionManager = new SessionManager(this);
+//        sessionManager.checkLogin();
 
         fab = findViewById(R.id.add);
         recyclerView = findViewById(R.id.recyler_view);
