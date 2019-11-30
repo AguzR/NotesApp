@@ -78,13 +78,15 @@ public class LoginActivity extends AppCompatActivity implements AuthView{
     }
 
     @Override
-    public void onGetUsers(String idUser, String name, String email) {
-        sessionManager.createSession(idUser, name, email);
+    public void onRequestSuccess(String message) {
+        //
     }
 
     @Override
-    public void onRequestSuccess(String message) {
+    public void onGetUsers(String message, String idUser, String name, String email) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        sessionManager.createSession(idUser, name, email);
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override

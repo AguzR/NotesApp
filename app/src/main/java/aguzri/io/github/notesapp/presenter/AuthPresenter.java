@@ -31,11 +31,14 @@ public class AuthPresenter {
             public void onResponse(@NonNull Call<Users> call, @NonNull Response<Users> response) {
                 view.hideProgressDialog();
 
-                if (response.isSuccessful() && response.body() !=null) {
+                if (response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
                     if (success) {
-                        view.onGetUsers(response.body().getId(), response.body().getName(), response.body().getEmail());
-                        view.onRequestSuccess(response.body().getMessage());
+                        view.onGetUsers(
+                                response.body().getMessage(),
+                                response.body().getId(),
+                                response.body().getName(),
+                                response.body().getEmail());
                     } else {
                         view.onRequestError(response.body().getMessage());
                     }

@@ -9,19 +9,24 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("notes/create.php")
     Call<Note> createNote(
+            @Field("idUsers") String user_id,
             @Field("title") String title,
             @Field("note") String note,
             @Field("color") int color
     );
 
     @GET("notes/read.php")
-    Call<List<Note>> getNotes();
+    Call<List<Note>> getNotes(
+            @Query("idUsers") String idUsers
+    );
 
     @FormUrlEncoded
     @POST("notes/update.php")

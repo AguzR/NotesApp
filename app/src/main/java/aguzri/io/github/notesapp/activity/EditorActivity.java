@@ -35,7 +35,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
     EditorPresenter presenter;
 
     int color, id;
-    String title, note;
+    String idUsers, title, note;
     Menu actionMenu;
 
     @Override
@@ -58,6 +58,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
 
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0);
+        idUsers = "1";
         title = intent.getStringExtra("title");
         note = intent.getStringExtra("note");
         color = intent.getIntExtra("color", 0);
@@ -100,7 +101,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
                 } else if (note.isEmpty()) {
                     et_note.setError("Please enter a title");
                 } else {
-                    presenter.saveNote(title, note, color);
+                    presenter.saveNote(idUsers, title, note, color);
                 }
                 return true;
             case R.id.edit:

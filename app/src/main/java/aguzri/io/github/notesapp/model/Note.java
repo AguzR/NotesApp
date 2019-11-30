@@ -8,6 +8,8 @@ public class Note {
     @Expose
     @SerializedName("id") private int id;
     @Expose
+    @SerializedName("idUsers") private String idUsers;
+    @Expose
     @SerializedName("title") private String title;
     @Expose
     @SerializedName("note") private String note;
@@ -15,6 +17,8 @@ public class Note {
     @SerializedName("color") private int color;
     @Expose
     @SerializedName("created") private String created;
+    @Expose
+    @SerializedName("updated") private String updated;
     @Expose
     @SerializedName("success") private Boolean success;
     @Expose
@@ -26,6 +30,14 @@ public class Note {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getIdUsers() {
+        return idUsers;
+    }
+
+    public void setIdUsers(String idUsers) {
+        this.idUsers = idUsers;
     }
 
     public String getTitle() {
@@ -58,6 +70,14 @@ public class Note {
 
     public void setCreated(String created) {
         this.created = created;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
     }
 
     public Boolean getSuccess() {

@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity implements AuthView{
     }
 
     @Override
-    public void onGetUsers(String idUser, String name, String email) {
+    public void onGetUsers(String message, String idUser, String name, String email) {
         // Only Login is Here
     }
 

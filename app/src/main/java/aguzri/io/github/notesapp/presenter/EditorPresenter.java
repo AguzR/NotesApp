@@ -18,10 +18,10 @@ public class EditorPresenter {
         this.view = view;
     }
 
-    public void saveNote(final String title, final String note, final int color) {
+    public void saveNote(final String idUsers, final String title, final String note, final int color) {
         view.showProgressDialog();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<Note> call = apiInterface.createNote(title, note, color);
+        Call<Note> call = apiInterface.createNote(idUsers, title, note, color);
 
         call.enqueue(new Callback<Note>() {
             @Override
