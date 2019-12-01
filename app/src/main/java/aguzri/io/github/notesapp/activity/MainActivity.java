@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements MainView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setElevation(0);
+
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
         HashMap<String, String> user = sessionManager.getUserDetail();
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = new MenuInflater(this);
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -106,7 +108,8 @@ public class MainActivity extends AppCompatActivity implements MainView{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.profile:
-                sessionManager.logOut();
+                startActivity(new Intent(this, AccountActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

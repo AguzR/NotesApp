@@ -119,6 +119,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView {
                 } else {
                     presenter.updateNote(id, title, note, color);
                 }
+                return true;
 
             case R.id.delete:
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);

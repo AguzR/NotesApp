@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/dimens4dp"
-    android:layout_marginLeft="@dimen/dimens10dp"
-    android:layout_marginRight="@dimen/dimens10dp"
+    android:layout_marginLeft="@dimen/dimen8dp"
+    android:layout_marginRight="@dimen/dimen8dp"
     android:layout_marginTop="@dimen/dimens4dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="2dp"
-    app:cardElevation="1dp">
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:id="@+id/line"
-        android:layout_width="@dimen/dimens10dp"
+        android:layout_width="@dimen/dimen8dp"
         android:layout_height="match_parent"
-        android:background="@color/mgrey"
+        android:background="@color/silvernew"
         android:orientation="vertical" />
 
     <RelativeLayout

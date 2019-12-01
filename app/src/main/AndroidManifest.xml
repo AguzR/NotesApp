@@ -29,6 +29,7 @@
         <activity
             android:name=".activity.RegisterActivity"
             android:theme="@style/AuthTheme" />
+        <activity android:name=".activity.AccountActivity"></activity>
     </application>
 
 </manifest>

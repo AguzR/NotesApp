@@ -11,6 +11,7 @@
     <color name="green">#11c911</color>
     <color name="black">#000000</color>
     <color name="mgrey">#a77e7e</color>
+    <color name="silvernew">#f1e8e8</color>
 
     <array name="demo_colors">
         <item>@color/white</item>
