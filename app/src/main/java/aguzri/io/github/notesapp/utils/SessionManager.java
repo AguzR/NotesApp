@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 
 import java.util.HashMap;
 
+import aguzri.io.github.notesapp.activity.AccountActivity;
 import aguzri.io.github.notesapp.activity.LoginActivity;
 import aguzri.io.github.notesapp.activity.MainActivity;
 
@@ -61,6 +62,6 @@ public class SessionManager {
         editor.commit();
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
-        ((MainActivity) context).finish();
+        ((AccountActivity) context).finish();
     }
 }
