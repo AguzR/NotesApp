@@ -29,6 +29,7 @@
         android:padding="@dimen/dimens10dp">
 
         <TextView
+            android:fontFamily="@font/play_regular"
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
             android:maxLength="150"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/play_regular"
             android:layout_below="@id/title"
             android:layout_marginTop="@dimen/dimens4dp"
             android:text="@string/enter_note" />
@@ -50,6 +52,7 @@
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/play_regular"
             android:layout_below="@id/note"
             android:layout_marginTop="@dimen/dimens4dp"
             android:gravity="end"

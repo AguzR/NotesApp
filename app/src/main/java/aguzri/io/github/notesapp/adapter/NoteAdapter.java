@@ -38,8 +38,61 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.RecyclerViewAd
         Note note = notes.get(position);
         holder.tv_title.setText(note.getTitle());
         holder.tv_note.setText(note.getNote());
-        holder.tv_date.setText(note.getCreated());
         holder.cardView.setCardBackgroundColor(note.getColor());
+
+        // ambil data date created
+        String DateTimC = note.getCreated();
+
+        // split date and time
+        String[] datetimc = DateTimC.split("\\s");
+
+        // result split date and time
+        String datec = datetimc[0];
+        String timec = datetimc[1];
+
+        // split date with year, month and day
+        String[] DateC = datec.split("\\-");
+
+        // result split date
+        String yearC = DateC[0];
+        String monthC = DateC[1];
+        String dayC = DateC[2];
+
+        // split time with hour, minute and second
+        String TimeC[] = timec.split("\\:");
+
+        // result split time
+        String hourC = TimeC[0];
+        String minuteC = TimeC[1];
+        String secondC = TimeC[2];
+
+        if (monthC.equals("01")) {
+            monthC = "Jan";
+        } else if (monthC.equals("02")) {
+            monthC = "Feb";
+        } else if (monthC.equals("03")) {
+            monthC = "Mar";
+        } else if (monthC.equals("04")) {
+            monthC = "Apr";
+        } else if (monthC.equals("05")) {
+            monthC = "Mei";
+        } else if (monthC.equals("06")) {
+            monthC = "Jun";
+        } else if (monthC.equals("07")) {
+            monthC = "Jul";
+        } else if (monthC.equals("08")) {
+            monthC = "Agu";
+        } else if (monthC.equals("09")) {
+            monthC = "Sep";
+        } else if (monthC.equals("10")) {
+            monthC = "Okt";
+        } else if (monthC.equals("11")) {
+            monthC = "Nov";
+        } else if (monthC.equals("12")) {
+            monthC = "Des";
+        }
+
+        holder.tv_date.setText("Dibuat : " + dayC + " " + monthC + " " + yearC + " pukul " + hourC + ":" + minuteC);
     }
 
     @Override
