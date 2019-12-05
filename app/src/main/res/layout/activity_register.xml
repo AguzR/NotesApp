@@ -35,7 +35,6 @@
                 android:layout_below="@id/app"
                 android:layout_marginBottom="@dimen/dimens4dp"
                 android:layout_marginTop="@dimen/dimens16dp"
-                android:fontFamily="@font/play_regular"
                 android:hint="@string/fullname"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -46,7 +45,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/et_name"
                 android:layout_marginBottom="@dimen/dimens4dp"
-                android:fontFamily="@font/play_regular"
                 android:hint="@string/email_address"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -57,7 +55,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/et_email"
                 android:layout_marginBottom="@dimen/dimens4dp"
-                android:fontFamily="@font/play_regular"
                 android:hint="@string/password"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -80,7 +77,6 @@
                 android:layout_below="@id/et_cpassword"
                 android:layout_marginBottom="@dimen/dimens10dp"
                 android:layout_marginTop="@dimen/dimens16dp"
-                android:fontFamily="@font/play_regular"
                 android:gravity="center"
                 android:text="@string/have_account_login"
                 android:textColor="@color/black"
@@ -93,7 +89,6 @@
                 android:layout_alignParentBottom="true"
                 android:layout_below="@id/tv_login"
                 android:background="@color/colorAccent"
-                android:fontFamily="@font/play_bold"
                 android:text="@string/register"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
