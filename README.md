@@ -11,4 +11,6 @@ and MVP Architecture
 
 # Result
 
-![login](https://drive.google.com/file/d/114SdDrz7DiJjQW676_-W4dX3nnMIxlkD/view)
+![login](https://raw.githubusercontent.com/AguzR/NotesApp/master/app/src/main/res/drawable/login.PNG) ![regist](https://raw.githubusercontent.com/AguzR/NotesApp/master/app/src/main/res/drawable/regist.PNG) ![read](https://raw.githubusercontent.com/AguzR/NotesApp/master/app/src/main/res/drawable/read.PNG) ![create](https://raw.githubusercontent.com/AguzR/NotesApp/master/app/src/main/res/drawable/create.PNG) ![update](https://raw.githubusercontent.com/AguzR/NotesApp/master/app/src/main/res/drawable/edit.PNG) ![delete](https://raw.githubusercontent.com/AguzR/NotesApp/master/app/src/main/res/drawable/delete.PNG) ![profile](https://raw.githubusercontent.com/AguzR/NotesApp/master/app/src/main/res/drawable/profile.PNG)
+
+Thankss....
