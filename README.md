@@ -8,3 +8,7 @@ and MVP Architecture
 4. Swipe to Refresh Data
 5. Get Data with JSON
 6. ColorPallate
+
+# Result
+
+![login](https://drive.google.com/file/d/114SdDrz7DiJjQW676_-W4dX3nnMIxlkD/view)
