@@ -36,6 +36,7 @@
                 android:layout_marginBottom="@dimen/dimens4dp"
                 android:layout_marginTop="@dimen/dimens16dp"
                 android:hint="@string/fullname"
+                android:inputType="textCapSentences"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -46,11 +47,13 @@
                 android:layout_below="@id/et_name"
                 android:layout_marginBottom="@dimen/dimens4dp"
                 android:hint="@string/email_address"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/et_password"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/et_email"
@@ -61,6 +64,7 @@
 
             <EditText
                 android:id="@+id/et_cpassword"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/et_password"
